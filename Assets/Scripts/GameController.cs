@@ -4,15 +4,21 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+  public GameObject Player;
+  public GameObject Maze;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+  private PlayerController player;
+  private MazeGenerator maze;
+
+  private void Awake()
+  {
+    player = Player.GetComponent<PlayerController>();
+    maze = Maze.GetComponent<MazeGenerator>();
+  }
+
+  private void Start()
+  {
+    maze.ResetBoard(5, 5);
+    player.Go(maze.RandomCellPosition());
+  }
 }

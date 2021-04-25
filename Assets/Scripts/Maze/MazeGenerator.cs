@@ -15,13 +15,22 @@ public class MazeGenerator : MonoBehaviour
 
   private Board board;
 
-  private void Start()
+
+  public void ResetBoard(int cols, int rows)
   {
-    Random.InitState(42);
+    Cols = cols;
+    Rows = rows;
     board = Generate(Cols, Rows);
     FloorTilemap.ClearAllTiles();
     WallTilemap.ClearAllTiles();
     DrawBoard(board);
+  }
+
+  public Vector3 RandomCellPosition()
+  {
+    var cell = board.RandomCell;
+    var cellPos = FloorTilemap.CellToWorld(new Vector3Int(cell.Col, cell.Row, 0));
+    return cellPos + new Vector3(0.5f, 0.5f, 0);
   }
 
   private void DrawBoard(Board b)
@@ -85,6 +94,7 @@ public class MazeGenerator : MonoBehaviour
       }
     }
   }
+
   private Board Generate(int cols, int rows)
   {
     var board = new Board(cols, rows);
