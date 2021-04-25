@@ -4,7 +4,7 @@ Descend through an infinite series of mazes. Deeper and deeper. How far can can 
 
 ## Plan
 
-* Maze Generation on Tiles
+x Maze Generation on Tiles
 * Character and Character Movement
 * Maze Descends with Game Over
 * Falling through Exits 
